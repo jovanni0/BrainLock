@@ -1,0 +1,71 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="checked.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="navigation-conatainer">
+        <button class="navigation_buttons" onclick="window.location='../home/home.html'">
+            HOME
+        </button>
+    
+        <button id="new_quiz">
+            NEW
+        </button>
+    </div>
+    
+
+    <div class="container">
+
+
+        <div id="score" class="score-container">
+            <span style="color: #d4f7d4;">
+                Nr întrebări corecte: 0
+            </span><br>
+            <span style="color: #f7d4d4;">
+                Nr de întrebări greșite: 0
+            </span><br>
+            <span style="color: #8ad2ff;">
+                Nr de întrebări fără răspuns: 2
+            </span>
+        </div>
+
+        <div id="text">
+            <div class="question-container">
+                1.sortand prin insertie, dupa 5 iteratii tabloul [35, 36, 7, 0, 1, 7] devine:
+                <div class="answers">
+                    [0, 1, 7, 35, 36, 7]
+                </div>
+                <div class="answers">
+                    [0, 1, 7, 35, 7, 36]
+                </div>
+                <div class="answers missed-correct-answer">
+                    [0, 1, 7, 7, 35, 36]
+                </div>
+            </div>
+
+            <div class="question-container">
+                2.un tip de data abstract articol implementat in C este:
+                <div class="answers">
+                    nici un raspuns nu este corect
+                </div>
+                <div class="answers">
+                    o uniune
+                </div>
+                <div class="answers missed-correct-answer">
+                    o structura 
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="checked.js"></script>
+
+</body>

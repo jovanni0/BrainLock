@@ -6,11 +6,17 @@ let learningMode = localStorage.getItem("learningMode") === "1";
 window.onload = () => {
     changeColor('timer', timerState);
     changeColor('learn', learningMode);
+
+    const timer_timespan = parseInt(localStorage.getItem("timer_timespan")) || 15;
+    const number_of_items = parseInt(localStorage.getItem("number_or_questions")) || 10;
+    document.getElementById("timer_value").value = timer_timespan;
+    document.getElementById("question_number").value = number_of_items;
 };
 
 
 function goHome() {
     localStorage.setItem("timer_timespan", document.getElementById("timer_value").value);
+    localStorage.setItem("number_or_questions", document.getElementById("question_number").value);
     window.location.href = "../home/home.html";
     console.log(timer_value_field.value);
 }

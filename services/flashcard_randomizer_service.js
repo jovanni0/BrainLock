@@ -1,13 +1,21 @@
 function getQuestions(path, number_of_quizzes, callback) {
-    
+    const converter = new showdown.Converter({ simpleLineBreaks: true });
+
     fetch(path)
         .then(response => response.json())
         .then(data => {
+            data = data.map(elem => ({
+                ...elem,
+                question: converter.makeHtml(elem.question),
+                answer: converter.makeHtml(elem.answer)
+            }));
+
             questionsOrder = shuffle(data);
 
             if (!(number_of_quizzes === "all")) {
                 questionsOrder = questionsOrder.slice(0, number_of_quizzes);
             }
+            
             callback(questionsOrder); // sent the questions back
         })
         .catch(error => console.error('Error fetching questions:', error));

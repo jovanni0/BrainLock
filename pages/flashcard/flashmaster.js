@@ -4,9 +4,16 @@ $(document).ready(function () {
     localStorage.removeItem("flashcards_data");
     localStorage.removeItem("flashcards_question_index");
 
-    // const question_set_path = localStorage.getItem("question_set_path");
+    const flashcard_question_set_path = localStorage.getItem("flashcard_question_set_path");
+    const flashcardTimerIsOn = localStorage.getItem("flashcard_timer_is_on") || "false";
+    const flashcardTimeSpan = parseInt(localStorage.getItem("flashcard_time_span")) || 15;
+    const flashcardShowAll = localStorage.getItem("flashcard_show_all") || "false";
+    const flashcardNumber = parseInt(localStorage.getItem("flashcard_number")) || 20;
 
-    getQuestions('../../assets/flashcards/' + "flashcards.json", 3, gotQuestions);
+    if (flashcardShowAll === "true")
+        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, "all", gotQuestions);
+    else
+        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, flashcardNumber, gotQuestions);
 });
 
 

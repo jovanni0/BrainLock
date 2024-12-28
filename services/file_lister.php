@@ -1,20 +1,17 @@
 <?php
-// Path to the directory (assets/quizzes in this case)
-$dir = '../assets/quizzes';
 
-// Check if the directory exists
+$dir = '../assets/' . ($_GET['dir'] ?? '');
+
 if (is_dir($dir)) {
-    // Scan the directory for files and folders
     $files = scandir($dir);
 
-    // Filter the files to include only .json files
-    $jsonFiles = array_filter($files, function($file) {
-        return pathinfo($file, PATHINFO_EXTENSION) === 'json';
+    $jsonFiles = array_filter($files, function($file) use ($dir) {
+        return pathinfo($file, PATHINFO_EXTENSION) === 'json' && is_file($dir . DIRECTORY_SEPARATOR . $file);
     });
 
     // Return the list of .json files as a JSON response
     header('Content-Type: application/json');
-    echo json_encode(array_values($jsonFiles)); // array_values to reset the array keys
+    echo json_encode(array_values($jsonFiles));
 } else {
     // If the directory does not exist, send an error message
     header('Content-Type: application/json');

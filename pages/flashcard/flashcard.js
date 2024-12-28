@@ -1,38 +1,83 @@
 let questions = JSON.parse(localStorage.getItem("flashcards_data"));
 let flashcardQuestionIndex = parseInt(localStorage.getItem("flashcards_question_index") || "0")
 let loaded = 0;
+let question = false;
 
 
 $(document).ready(function () {
-    react2Event();
+    loadQuestion()
+
+    $("#prev_question").off("click").on("click", function () {
+        flashcardQuestionIndex--;
+        loadQuestion();
+    });
+    $("#next_question").off("click").on("click", function () {
+        if ($("#next_question").text() == "NEXT") {
+            flashcardQuestionIndex++;
+            loadQuestion();
+        }
+        else if ($("#next_question").text() == "HOME") {
+            window.location.href = "../home/home.html";
+        }
+    });
 });
 
 
-function react2Event() {
+function toggleFullscreen() {
+    if (!document.fullscreenElement && document.documentElement.requestFullscreen)
+        document.documentElement.requestFullscreen();
+    else if (document.fullscreenElement) document.exitFullscreen();
+}
+
+
+function loadQuestion() {
     const card = document.getElementById("card");
 
     if (questions == null) {
         console.log("question null");
         return;
     }
-
-    if (loaded == 1 && card.classList == "question") {
-        card.innerText = questions[flashcardQuestionIndex].answer;
-        card.classList = "answer"
-        flashcardQuestionIndex++;
+    if (card == null) {
+        console.log("could not find card");
         return;
     }
 
-    if (flashcardQuestionIndex >= questions.length) {
-        console.log("index runaway");
-        window.location.href = "../home/home.html";
+    localStorage.setItem("flashcards_question_index", flashcardQuestionIndex)
+    card.innerHTML = questions[flashcardQuestionIndex].question;
+    card.classList = "question"
+    question = true;
+
+    if (flashcardQuestionIndex == 0) $("#prev_question").prop("disabled", true);
+    else $("#prev_question").prop("disabled", false);
+
+    if (flashcardQuestionIndex + 1 >= questions.length) $("#next_question").text("HOME");
+    else $("#next_question").text("NEXT");
+
+    return;
+}
+
+
+function loadAnswer() {
+    const card = document.getElementById("card");
+
+    if (questions == null) {
+        console.log("question null");
+        return;
+    }
+    if (card == null) {
+        console.log("could not find card");
         return;
     }
 
-    if (card.classList.length == 0 || card.classList == "answer") {
-        card.innerText = questions[flashcardQuestionIndex].question;
-        card.classList = "question"
-        loaded = 1;
-        return;
-    }
+    card.innerHTML = questions[flashcardQuestionIndex].answer;
+    card.classList = "answer"
+    question = false;
+    return;
+}
+
+
+function flipCard() {
+    if (!question) loadQuestion();
+    else loadAnswer();
+    return;
 }

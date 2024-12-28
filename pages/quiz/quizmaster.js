@@ -8,8 +8,15 @@ $(document).ready(function () {
     localStorage.removeItem("userAnswersIndexes");
 
     const question_set_path = localStorage.getItem("question_set_path");
+    const quizTimerIsOn = localStorage.getItem("quiz_timer_is_on") || "false";
+    const quizTimeSpan = parseInt(localStorage.getItem("quiz_time_span")) || 15;
+    const quizShowAll = localStorage.getItem("quiz_show_all") || "false";
+    const quizNumber = parseInt(localStorage.getItem("quiz_number")) || 20;
 
-    getQuestions('../../assets/quizzes/' + question_set_path, 3, gotQuestions);
+    if (quizShowAll === "true")
+        getQuestions('../../assets/quizzes/' + question_set_path, "all", gotQuestions);
+    else
+        getQuestions('../../assets/quizzes/' + question_set_path, quizNumber, gotQuestions);
 });
 
 

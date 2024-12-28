@@ -1,98 +1,80 @@
 html,
 body {
   background-color: #0e1525;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 5vw;
 }
 
-.container {
+.top-elements {
   display: flex;
+  justify-content: space-between;
+}
+
+.question-container {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 60vh;
-  width: 50vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* width: 80%; */
+  max-width: 550px;
+  margin: 0 auto;
+  gap: 1vw;
 }
 
 .quiz {
-  width: 46vw;
   background-color: #1c2333;
-  padding: 3vw;
-  border-radius: 4vw;
-  text-align: center;
+  padding: 1.5vw;
+  border-radius: 3vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  position: relative;
-  border-style: solid;
-  border-color: orange;
-  border-width: 0.2vw;
+  justify-content: center;
+  border: 0.2vw solid orange;
 }
 
 .quiz p {
   color: white;
-  font-weight: bolder;
-  font-size: 1.95vw;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
 }
 
 .answer {
   background-color: rgb(225, 225, 225);
-  width: 42vw;
-  padding: 0.5vw;
-  margin: 0.5vw;
   color: black;
-  font-size: 1.7vw;
-  font-family: Verdana;
+  padding: 0.5vw;
+  margin: 0.8vw;
+  font-size: 0.75rem;
   text-align: left;
-  border-radius: 1vw;
+  border-radius: 0.7vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .answer input[type="checkbox"] {
-  margin-top: 0.675vw;
-  margin-right: 0.5vw;
-  transform: scale(2.5);
-  float: right;
   cursor: pointer;
 }
 
-#timer {
-  width: 19vw;
-  height: 5.5vw;
-  background-color: #0053a6;
-  border-radius: 2vw;
-  margin: 1vw;
+.navigation-container {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  float: right;
-  border-color: orange;
-  border-style: solid;
-  border-width: 0.2vw;
+  gap: 1vw;
 }
 
-#timer p {
+button {
+  background-color: #0053a6;
   color: white;
-  font-size: 3vw;
-  font-family: Verdana;
+  border: 0.2vw solid white;
+  border-radius: 1vw;
+}
+
+button:hover {
+  background-color: #3279c0;
 }
 
 .navigation_buttons {
-  font-family: Verdana;
-  font-size: 1.7vw;
-  color: white;
-  background-color: #0053a6;
-  padding: 0.7vw;
-  margin: 1vw;
-  border-color: white;
-  border-style: solid;
-  border-width: 0.2vw;
-}
-
-.navigation_buttons:hover {
-  background-color: #3279c0;
+  padding: 1vw;
+  border: 0.2vw solid white;
+  flex: 1;
 }
 
 .prev {
@@ -107,10 +89,27 @@ body {
   cursor: pointer;
 }
 
-.prev:hover {
-  background-color: #3279c0;
+#timer {
+  /* background-color: #0053a6; */
+  height: fit-content;
+  color: white;
+  padding: 10px;
+  border-radius: 1vw;
+  justify-content: center;
+  align-items: center;
+  border: 0.2vw solid white;
 }
 
-.next:hover {
-  background-color: #3279c0;
+.exit {
+  background-color: transparent;
+  height: fit-content;
+  color: white;
+  padding: 10px;
+  border-radius: 1vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.nohover {
+  pointer-events: none;
 }

@@ -1,338 +1,94 @@
-
-
-@media (min-width: 640px) {
-
-  html, body {
-    /* background-color: rgb(225, 225, 225); */
-    background-color: #0e1525;
-  
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden; /* Ascunde barele de derulare */
-  }
-  
-  /* Container with vertical scroll and hidden scrollbar */
-  .container {
-    height: 97vh;
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Aliniază elementele la început pe verticală */
-    align-items: center; /* Centrează elementele pe orizontală */
-    overflow-y: scroll; /* Permite derularea pe verticală */
-    scrollbar-width: none; /* Pentru Firefox */
-    -ms-overflow-style: none;  /* Pentru Internet Explorer și Edge */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1vw;
-    border-radius: 4vw;
-    position: relative; /* Necesară pentru poziționarea absolută a elementelor copil */
-  }
-  
-  /* Ascunde bara de derulare în browsere Webkit */
-  .container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .answer_container {
-    width: 46vw;
-    background-color: #1c2333;
-    padding: 3vw;
-    border-radius: 4vw;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    color: white;
-    font-weight: bolder;
-    font-size: 1.95vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 1vw 0; /* Spațiu între fiecare întrebare */
-    border-style:solid;
-    border-color:orange;
-    border-width:0.2vw;
-  }
-  
-  .answers {
-    background-color: rgb(225, 225, 225);
-    width: 42vw;
-    padding: 0.5vw;
-    margin: 0.5vw;
-    color: black;
-    font-size: 1.7vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: left;
-    border-radius: 1vw;
-    position: relative; /* Pentru a permite poziționarea absolută a iconițelor */
-    transition: background-color 0.3s ease; /* Tranziție lină pentru schimbarea culorii de fundal */
-    
-  }
-  
-  .new {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.7vw;
-    color: white;
-    background-color:#0053a6;
-    padding: 0.7vw;
-    margin: 1vw;
-    top:3vw;
-    border-radius: 1.2vw;
-    cursor: pointer;
-    position: absolute; /* Poziționează butonul absolut în interiorul containerului */
-    top: 1vw; /* Distanța de sus a containerului */
-    right: 1vw; /* Distanța de marginea din dreapta a containerului */
-    /* border: none; Elimină stilul de margine */
-    border-color:orange;
-    border-style:solid;
-    border-width:0.2vw;
-  }
-
-  .navigation_buttons {
-    font-family: Verdana;
-    font-size: 1.7vw;
-    color: white;
-    background-color: #0053a6;
-    padding: 0.7vw;
-    margin: 1vw;
-    border-color: white;
-    border-style: solid;
-    border-width: 0.2vw;
-  }
-  
-  /* Stiluri pentru răspunsuri corecte și greșite */
-  .correct-answer {
-    background-color: #d4f7d4; /* Verde deschis pentru răspunsurile corecte */
-  }
-  
-  .incorrect-answer {
-    background-color: #f7d4d4; /* Roșu deschis pentru răspunsurile greșite */
-  }
-  
-  .missed-correct-answer {
-    background-color: #8ad2ff; /* Verde închis pentru răspunsurile corecte omise */
-  }
-  
-  .answers i {
-    position: absolute;
-    right: 1vw;
-    top: 50%;
-    transform: translateY(-50%);
-  
-  
-  }
-  
-  
-  .score
-  {
-    width: 46vw;
-    background-color: #1c2333;
-    padding: 3vw;
-    border-radius: 4vw;
-    text-align: left;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    color: white;
-    font-weight: bolder;
-    font-size: 1.95vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 1vw 0; /* Spațiu între fiecare întrebare */
-    border-style:solid;
-    border-color:white;
-    border-width:0.2vw;
-    line-height: 1.6;
-  }
+html,
+body {
+  background-color: #0e1525;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 5vw;
 }
 
-
-@media (max-width: 640px) {
-
-
-  html, body {
-    /* background-color: rgb(225, 225, 225); */
-    background-color: #0e1525;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    overflow: hidden; /* Ascunde barele de derulare */
-  }
-  
-  /* Container with vertical scroll and hidden scrollbar */
-  .container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Aliniază elementele la început pe verticală */
-    align-items: center; /* Centrează elementele pe orizontală */
-    overflow-y: scroll; /* Permite derularea pe verticală */
-    scrollbar-width: none; /* Pentru Firefox */
-    -ms-overflow-style: none;  /* Pentru Internet Explorer și Edge */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1vw;
-  }
-  
-  /* Ascunde bara de derulare în browsere Webkit */
-  .container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .answer_container {
-    width: 60vw !important;
-    background-color: #1c2333;
-    padding: 3vw;
-    border-radius: 4vw;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;      
-    flex-direction: column;
-    position: relative;
-    color: white;
-    font-weight: bolder;
-    font-size: 4.95vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 4vw; /* Spațiu între fiecare întrebare */
-    border-style:solid;
-    border-color:orange;
-    border-width:0.2vw;
-  }
-  
-  .answers {
-    background-color: rgb(225, 225, 225);
-    width: 83vw;
-    height: 3.5vh;
-    padding: 2.5vw;
-    margin:2.5vw;
-    color: black;
-    font-size: 3.7vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: left;
-    border-radius: 2.2vw;
-    position: relative; /* Pentru a permite poziționarea absolută a iconițelor */
-    display:flex;
-    align-items:center;
-  }
-  
-  .new {
-    width: 95vw; /* La fel ca answer_container */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4.5vw; /* La fel ca întrebările din .answer_container */
-    color: white;
-    background-color: #0053a6;
-    padding: 2vw 0; /* Mai mult padding pentru a fi mai înalt */
-    margin: 3.5vw;
-    border-radius: 2.2vw;
-    cursor: pointer;
-    border-color: orange;
-    border-style: solid;
-    border-width: 0.2vw;
-    text-align: center; /* Asigură-te că textul este centrat */
+.navigation-conatainer {
+  display: flex;
+  justify-content: space-between;
 }
 
-  
-  /* Stiluri pentru răspunsuri corecte și greșite */
-  .correct-answer {
-    background-color: #d4f7d4; /* Verde deschis pentru răspunsurile corecte */
-  }
-  
-  .incorrect-answer {
-    background-color: #f7d4d4; /* Roșu deschis pentru răspunsurile greșite */
-  }
-  
-  .missed-correct-answer {
-    background-color: #8ad2ff; /* Verde închis pentru răspunsurile corecte omise */
-  }
-  
-  .answers i {
-    position: absolute;
-    right: 1vw;
-    top: 50%;
-    transform: translateY(-50%);
-  
-  
-  }
-  
-  
-  .score
-  {
-    width: 90vw;
-    background-color: #1c2333;
-    padding: 3vw;
-    border-radius: 4vw;
-    text-align: left;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    color: white;
-    font-weight: bolder;
-    font-size: 3.7vw;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 1vw 0; /* Spațiu între fiecare întrebare */
-    border-style:solid;
-    border-color:white;
-    border-width:0.2vw;
-    line-height: 1.6;
-  }
-
+.container {
+  /* background-color: red; */
+  /* width: 80%; */
+  max-width: 550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /* Media query for Samsung Galaxy Tab S7 FE and Tab S9 in landscape mode */
- @media only screen and (min-width: 800px) and (max-width: 1600px) and (orientation: landscape) {
-
-
-  
+.score-container {
+  background-color: #1c2333;
+  color: white;
+  border: 0.2vw solid white;
+  border-radius: 3vw;
+  /* width: 46vw; */
+  width: 100%;
+  padding: 1.5vw 3vw;
+  flex-direction: column;
+  /* line-height: 1.6; */
+  box-sizing: border-box;
+  display: flex;
 }
 
-/* Media query for Samsung Galaxy Tab S8 Ultra in landscape mode */
-@media only screen and (min-width: 1000px) and (max-width: 1600px) and (orientation: landscape) {
-  /* You can add specific styles for Tab S8 Ultra if necessary */
-
+.question-container {
+  background-color: #1c2333;
+  color: white;
+  border: 0.2vw solid orange;
+  border-radius: 3vw;
+  /* width: 46vw; */
+  padding: 1.5vw 3vw;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  margin: 1vw 0;
 }
 
+button {
+  background-color: #0053a6;
+  color: white;
+  border: 0.2vw solid white;
+  border-radius: 1vw;
+  padding: 0.5vw 1vw;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 
+.answers {
+  background-color: rgb(225, 225, 225);
+  color: black;
+  padding: 0.5vw;
+  margin: 0.5vw;
+  font-size: 1rem;
+  text-align: left;
+  border-radius: 0.7vw;
+}
 
+.correct-answer {
+  background-color: #d4f7d4;
+}
 
+.incorrect-answer {
+  background-color: #f7d4d4;
+}
 
+.missed-correct-answer {
+  background-color: #8ad2ff;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.new {
+  background-color: #0053a6;
+  color: white;
+  border: 0.2vw solid orange;
+  padding: 0.7vw;
+  margin: 1vw;
+  top: 3vw;
+  border-radius: 1vw;
+}

@@ -1,40 +1,26 @@
-<!-- homepage -->
-<!DOCTYPE html>
-
-<html lang=eng>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
 </head>
 
-<style>
+<body>
+    <div class="start-container">
+        <h1>GRILE</h1>
 
+        <select id="grila"></select>    
 
+        <div class="buttons-container">
+            <button onclick="window.location='../settings/settings.html'">
+                SETTINGS
+            </button>
 
-</style>
-
-<div class="start">
-
-    <h1>GRILE</h1>
-
-    <div class="buttons">
-
-        <a href="/pages/settings/settings.html">
-            <button>SETTINGS</button>
-        </a>
-
-        <button onclick="saveSelectedQuestionSet()">START</button>
-
+            <button onclick="saveSelectedQuestionSet()">
+                START
+            </button>
+        </div>
 
     </div>
 
-    <select id="grila">
-
-    </select>
-</div>
-
-<script src="home.js"></script>
-
-</html>
+    <script src="home.js"></script>
+</body>

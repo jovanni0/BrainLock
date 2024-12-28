@@ -32,7 +32,7 @@ function displayQuestion() {
     currentQuestion.answers.forEach((answer, i) => {
         const isSelected = userAnswersIndexes[questionIndex] && userAnswersIndexes[questionIndex].includes(i) ? "checked" : "";
         $("#answers").append(
-            `<div class="answer"><input type="checkbox" data-index="${i}" ${isSelected}> ${answer}</div>`
+            `<div class="answer">${answer} <input type="checkbox" data-index="${i}" ${isSelected}></div>`
         );
     });
 
@@ -81,7 +81,7 @@ function displayQuestion() {
 function activateTimer() {
     console.log("activate timer");
 
-    document.getElementById("demo").innerHTML = "loading...";
+    document.getElementById("timer").innerHTML = "loading...";
 
     var timespan = parseInt(localStorage.getItem("timer_timespan")) * 60000 || 900000; // default 15 min
     var countdown = setInterval(
@@ -89,11 +89,11 @@ function activateTimer() {
             var minutes = Math.floor((timespan % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((timespan % (1000 * 60)) / 1000);
 
-            document.getElementById("demo").innerHTML = minutes + " m " + seconds + " s ";
+            document.getElementById("timer").innerHTML = minutes + " m " + seconds + " s ";
 
             if (timespan < 0) {
                 clearInterval(countdown);
-                document.getElementById("demo").innerHTML = "EXPIRED";
+                document.getElementById("timer").innerHTML = "EXPIRED";
                 setTimeout(() => { window.location.href = "../overview/checked.html"; }, 2000);
             }
             timespan -= 1000;

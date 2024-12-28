@@ -12,21 +12,53 @@
 
 <body>
 
-    <button id="give_up" class="navigation_buttons next" onclick="window.location='../home/home.html'">GIVE UP</button>
+    <div class="top-elements">
+        <button id="give_up" class="exit" onclick="window.location='../home/home.html'">
+            GIVE UP
+        </button>
 
-    <div id="timer">
-        <p id="demo">RELAX!</p>
+        
+        <button id="timer" class="exit nohover">
+            RELAX!
+        </button>
     </div>
+    
 
-    <div class="container">
-        <button id="prev_question" class="navigation_buttons prev">PREV</button>
-
+    <div class="question-container">
         <div class="quiz">
-            <p id="question_text"></p>
-            <div id="answers"></div>
+            <p id="question_text">
+                This is a placeholder text for the question.
+                If u are seeing this, it means that something has gone terribly wrong.
+                I would probably run away. good luck!.
+            </p>        
+            <div id="answers" class="answers-container">
+                <div class="answer">
+                    run away
+                    <input type="checkbox">
+                </div>
+                <div class="answer">
+                    stay and probably die
+                    <input type="checkbox">
+                </div>
+                <div class="answer">
+                    idk, ure asking too much from me
+                    <input type="checkbox">
+                </div>
+                <div class="answer">
+                    LOL CAP
+                    <input type="checkbox">
+                </div>
+            </div>
         </div>
 
-        <button id="next_question" class="navigation_buttons next">NEXT</button>
+        <div class="navigation-container">
+            <button id="prev_question" class="navigation_buttons prev">
+                PREV
+            </button>
+            <button id="next_question" class="navigation_buttons next">
+                NEXT
+            </button>
+        </div>
     </div>
 
     <script src="quiz.js"></script>

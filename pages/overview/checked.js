@@ -28,7 +28,7 @@ function displayQuestions() {
         let partially_answered = false;
         let wrong = false;
 
-        const questionContainer = $('<div class="answer_container"></div>').html(`${questionIndex + 1}.${question.text}`);
+        const questionContainer = $('<div class="question-container"></div>').html(`${questionIndex + 1}. ${question.text}`);
 
         question.answers.forEach((answer, answerIndex) => {
             let answerElement = $('<div class="answers"></div>').text(answer);
@@ -38,11 +38,9 @@ function displayQuestions() {
 
                 if (question.correctAnswers.includes(answerIndex)) {
                     answerElement.addClass('correct-answer');
-                    answerElement.append(' <i class="fas fa-check" style="color: green;"></i>');
                 }
                 else {
                     answerElement.addClass('incorrect-answer');
-                    answerElement.append(' <i class="fas fa-times" style="color: red;"></i>');
                     all_correct = false;
                     wrong = true;
                 }
@@ -50,7 +48,6 @@ function displayQuestions() {
             else {
                 if (question.correctAnswers.includes(answerIndex)) {
                     answerElement.addClass('missed-correct-answer');
-                    answerElement.append(' <i class="fas fa-check" style="color: darkblue;"></i>');
                     all_correct = false;
                     partially_answered = true;
                 }

@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     const question_set_path = localStorage.getItem("question_set_path");
 
-    getQuestions('../../assets/quizzes/' + question_set_path, 2, gotQuestions);
+    getQuestions('../../assets/quizzes/' + question_set_path, 3, gotQuestions);
 });
 
 

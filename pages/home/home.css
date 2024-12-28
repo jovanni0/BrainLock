@@ -6,6 +6,7 @@ body {
     justify-content: center;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 
 .start-container {
@@ -14,14 +15,15 @@ body {
     color: white;
     border: 1px solid orange;
     border-radius: 4vw;
-    /* width: 80%; */
     max-width: 550px;
+    width: 100%;
     margin: 0, auto;
     display: flex;
     flex-direction: column;
     height: fit-content;
     padding: 30px;
     align-items: center;
+    gap: 30px;
 }
 
 .start-container h1 {
@@ -31,10 +33,10 @@ body {
 }
 
 .buttons-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 160px;
 }
 
 button {

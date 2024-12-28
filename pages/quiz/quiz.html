@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <button id="give_up" class="navigation_buttons next" onclick="window.location='../home/home.html'">GIVE UP</button>
+
+    <div id="timer">
+        <p id="demo">RELAX!</p>
+    </div>
+
+    <div class="container">
+        <button id="prev_question" class="navigation_buttons prev">PREV</button>
+
+        <div class="quiz">
+            <p id="question_text"></p>
+            <div id="answers"></div>
+        </div>
+
+        <button id="next_question" class="navigation_buttons next">NEXT</button>
+    </div>
+
+    <script src="quiz.js"></script>
+
+</body>
+
+</html>

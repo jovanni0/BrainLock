@@ -1,6 +1,22 @@
 function getQuestions(path, number_of_quizzes, callback) {
+    if (path.endsWith(".yaml")) {
+        fetch(path)
+        .then(response => response.text())
+        .then(text => {
+            const data = jsyaml.load(text);
+            let questionsOrder = shuffle(data);
+
+            if (!(number_of_quizzes === "all")) {
+                questionsOrder = questionsOrder.slice(0, number_of_quizzes);
+            }
+            callback(questionsOrder); // send the questions back
+            return;
+        })
+        .catch(error => console.error('Error fetching questions:', error));
+    }
     
-    fetch(path)
+    if (path.endsWith(".json")) {
+        fetch(path)
         .then(response => response.json())
         .then(data => {
             questionsOrder = shuffle(data);
@@ -9,8 +25,10 @@ function getQuestions(path, number_of_quizzes, callback) {
                 questionsOrder = questionsOrder.slice(0, number_of_quizzes);
             }
             callback(questionsOrder); // sent the questions back
+            return;
         })
         .catch(error => console.error('Error fetching questions:', error));
+    }
 }
 
 

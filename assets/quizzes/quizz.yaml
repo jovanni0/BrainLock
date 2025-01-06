@@ -1,0 +1,42 @@
+[
+  {
+    text: "Test quizz, hello!\n
+    here is an svg image:
+    <svg width=\"230\" height=\"240\" xmlns=\"http://www.w3.org/2000/svg\">
+      <g>
+        <title>Layer 1</title>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"115\" cy=\"32\" id=\"svg_1\" rx=\"22\" ry=\"22\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"29\" cy=\"29\" id=\"svg_2\" rx=\"22\" ry=\"22\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"195\" cy=\"32\" id=\"svg_3\" rx=\"21\" ry=\"21\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"202\" cy=\"127\" id=\"svg_4\" rx=\"22\" ry=\"22\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"28.5\" cy=\"121.5\" id=\"svg_5\" rx=\"26.5\" ry=\"26.5\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"114\" cy=\"123\" id=\"svg_6\" rx=\"26\" ry=\"26\"/>
+        <ellipse fill=\"#5fbf00\" stroke=\"#000\" cx=\"67.5\" cy=\"214.5\" id=\"svg_7\" rx=\"22.5\" ry=\"22.5\"/>
+        <line stroke-width=\"2\" fill=\"none\" stroke=\"#ffffff\" x1=\"26\" y1=\"48\" x2=\"26\" y2=\"96\" id=\"svg_9\"/>
+        <line stroke-width=\"2\" fill=\"none\" stroke=\"#ffffff\" x1=\"178\" y1=\"32\" x2=\"137\" y2=\"32\" id=\"svg_11\"/>
+        <line stroke-width=\"2\" fill=\"none\" stroke=\"#ffffff\" x1=\"52\" y1=\"121\" x2=\"87.01428\" y2=\"121\" id=\"svg_12\"/>
+        <line stroke-width=\"2\" fill=\"none\" stroke=\"#ffffff\" x1=\"75\" y1=\"192\" x2=\"105\" y2=\"147\" id=\"svg_13\"/>
+        <line stroke-width=\"2\" fill=\"none\" stroke=\"#ffffff\" x1=\"34\" y1=\"149\" x2=\"56\" y2=\"192\" id=\"svg_14\"/>
+        <text fill=\"#000000\" stroke=\"#000\" x=\"20\" y=\"35\" id=\"svg_15\" stroke-width=\"0\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">1</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"22\" y=\"130\" id=\"svg_16\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">2</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"111\" y=\"39\" id=\"svg_17\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">3</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"106\" y=\"129\" id=\"svg_18\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">4</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"61\" y=\"222\" id=\"svg_19\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">5</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"195\" y=\"133\" id=\"svg_20\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">6</text>
+        <text fill=\"#000000\" stroke=\"#000\" stroke-width=\"0\" x=\"188\" y=\"40\" id=\"svg_21\" font-size=\"24\" font-family=\"Noto Sans JP\" text-anchor=\"start\" xml:space=\"preserve\">7</text>
+        <line id=\"svg_8\" y2=\"105.5\" x2=\"42.5\" y1=\"44.5\" x1=\"100.5\" stroke-width=\"2\" stroke=\"#ffffff\" fill=\"none\"/>
+        <line id=\"svg_10\" y2=\"29.5\" x2=\"95.5\" y1=\"29.5\" x1=\"48.5\" stroke-width=\"2\" stroke=\"#ffffff\" fill=\"none\"/>
+      </g>
+      </svg>",
+    answers: [
+      "answer 1",
+      "answer 2",
+      "answer 3",
+      "answer 4"
+    ],
+    correctAnswers: [
+      1,
+      3
+    ]
+  }
+]

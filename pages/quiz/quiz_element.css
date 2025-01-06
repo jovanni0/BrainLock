@@ -21,6 +21,11 @@
     font-size: 1rem;
 }
 
+.question-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .answer {
     background-color: white;
     color: black;

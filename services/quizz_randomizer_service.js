@@ -1,9 +1,17 @@
 function getQuestions(path, number_of_quizzes, callback) {
+    const converter = new showdown.Converter({ simpleLineBreaks: true, ghCodeBlocks: true });
+
     if (path.endsWith(".yaml")) {
         fetch(path)
         .then(response => response.text())
         .then(text => {
-            const data = jsyaml.load(text);
+            let data = jsyaml.load(text);
+
+            data = data.map(elem => ({
+                ...elem,
+                text: converter.makeHtml(elem.text)
+            }));
+
             let questionsOrder = shuffle(data);
 
             if (!(number_of_quizzes === "all")) {

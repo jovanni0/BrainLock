@@ -26,6 +26,10 @@
     flex-direction: column;
 }
 
+code {
+    white-space: pre-wrap;
+}
+
 .answer {
     background-color: white;
     color: black;

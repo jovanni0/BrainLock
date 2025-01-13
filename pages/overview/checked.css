@@ -62,7 +62,7 @@ button {
 }
 
 .answers {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(255, 255, 255);
   color: black;
   padding: 0.5vw;
   margin: 0.5vw;
@@ -72,15 +72,15 @@ button {
 }
 
 .correct-answer {
-  background-color: #d4f7d4;
+  background-color: #6afa6a;
 }
 
 .incorrect-answer {
-  background-color: #f7d4d4;
+  background-color: #fd9a9a;
 }
 
 .missed-correct-answer {
-  background-color: #8ad2ff;
+  background-color: #7ac9fa;
 }
 
 .new {

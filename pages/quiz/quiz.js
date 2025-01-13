@@ -25,7 +25,13 @@ function displayQuestion() {
     }
 
     let currentQuestion = questions[questionIndex];
-    $("#question_text").html(`${questionIndex + 1}. ${currentQuestion.text}`);
+    let question = `${questionIndex + 1}. ${currentQuestion.text}`
+    if ("images" in currentQuestion) {
+        currentQuestion.images.forEach(element => {
+            question = `${question}\n${element}`       
+        });
+    }
+    $("#question_text").html(question);
     $("#answers").html("");
     
 

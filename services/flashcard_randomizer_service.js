@@ -1,7 +1,31 @@
 function getQuestions(path, number_of_quizzes, callback) {
     const converter = new showdown.Converter({ simpleLineBreaks: true });
 
-    fetch(path)
+    if (path.endsWith(".yaml")) {
+        fetch(path)
+        .then(response => response.text())
+        .then(text => {
+            let data = jsyaml.load(text);
+
+            data = data.map(elem => ({
+                ...elem,
+                question: converter.makeHtml(elem.text),
+                answer: converter.makeHtml(elem.answer)
+            }));
+
+            let questionsOrder = shuffle(data);
+
+            if (!(number_of_quizzes === "all")) {
+                questionsOrder = questionsOrder.slice(0, number_of_quizzes);
+            }
+            callback(questionsOrder); // send the questions back
+            return;
+        })
+        .catch(error => console.error('Error fetching questions:', error));
+    }
+    
+    if (path.endsWith(".json")) {
+        fetch(path)
         .then(response => response.json())
         .then(data => {
             data = data.map(elem => ({
@@ -19,6 +43,7 @@ function getQuestions(path, number_of_quizzes, callback) {
             callback(questionsOrder); // sent the questions back
         })
         .catch(error => console.error('Error fetching questions:', error));
+    }
 }
 
 

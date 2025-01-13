@@ -28,10 +28,16 @@ function displayQuestions() {
         let partially_answered = false;
         let wrong = false;
 
-        const questionContainer = $('<div class="question-container"></div>').html(`${questionIndex + 1}. ${question.text}`);
+        var question_text = `${questionIndex + 1}. ${question.text}`
+        if ("images" in question) {
+            question.images.forEach(element => {
+                question_text = `${question_text}\n${element}`       
+            });
+        }
+        const questionContainer = $('<div class="question-container"></div>').html(question_text);
 
         question.answers.forEach((answer, answerIndex) => {
-            let answerElement = $('<div class="answers"></div>').text(answer);
+            let answerElement = $('<div class="answers"></div>').html(answer);
 
             if (user_answers_indexes[questionIndex] && user_answers_indexes[questionIndex].includes(answerIndex)) {
                 answered = true;

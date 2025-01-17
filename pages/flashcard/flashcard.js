@@ -7,6 +7,9 @@ let question = false;
 $(document).ready(function () {
     loadQuestion()
 
+    var title = localStorage.getItem("flashcard_question_set_path").split('.')[0].toUpperCase();
+    $("#flashcard-title").text(title);
+
     $("#prev_question").off("click").on("click", function () {
         flashcardQuestionIndex--;
         loadQuestion();
@@ -46,6 +49,7 @@ function loadQuestion() {
     card.innerHTML = questions[flashcardQuestionIndex].question;
     card.classList = "question"
     question = true;
+    $("#progress").text(flashcardQuestionIndex + "/" + questions.length);
 
     if (flashcardQuestionIndex == 0) $("#prev_question").prop("disabled", true);
     else $("#prev_question").prop("disabled", false);

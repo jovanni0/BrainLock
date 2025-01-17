@@ -9,7 +9,7 @@ function getQuestions(path, number_of_quizzes, callback) {
 
             data = data.map(elem => ({
                 ...elem,
-                question: converter.makeHtml(elem.text),
+                question: converter.makeHtml(elem.question),
                 answer: converter.makeHtml(elem.answer)
             }));
 

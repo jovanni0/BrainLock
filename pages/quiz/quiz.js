@@ -4,12 +4,15 @@ let userAnswersIndexes = JSON.parse(localStorage.getItem("userAnswersIndexes")) 
 
 
 $(document).ready(function () {
-    displayQuestion();
+    var title = localStorage.getItem("question_set_path").split('.')[0].toUpperCase();
+    $("#quizz-title").text(title);
 
     const timer_status = localStorage.getItem("timerState") || "0";
     if (timer_status === "1") {
         activateTimer();
     }
+
+    displayQuestion();
 
     $("#prev_question").on("click", function () {
         questionIndex--;
@@ -18,11 +21,20 @@ $(document).ready(function () {
 });
 
 
+function toggleFullscreen() {
+    if (!document.fullscreenElement && document.documentElement.requestFullscreen)
+        document.documentElement.requestFullscreen();
+    else if (document.fullscreenElement) document.exitFullscreen();
+}
+
+
 function displayQuestion() {
     if (questionIndex >= questions.length) {
         console.log("question out of bounds");
         return;
     }
+
+    $("#progress").text(questionIndex + "/" + questions.length);
 
     let currentQuestion = questions[questionIndex];
     let question = `${questionIndex + 1}. ${currentQuestion.text}`

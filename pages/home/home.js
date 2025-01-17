@@ -54,6 +54,8 @@ $(document).ready(function () {
     document.getElementById('flashcardNumberInput').disabled = flashcardShowAll === "true";
     document.getElementById('flashcardShowAllCheckbox').checked = flashcardShowAll === "true";
     document.getElementById("flashcardRandomize").checked = flashcardRandomize === "true";
+
+    switchPage(localStorage.getItem("page") || "quizz_page", localStorage.getItem("button") || "quizz_tab")
 });
 
 
@@ -104,6 +106,9 @@ function switchPage(pageId, buttonId) {
     // Show the selected content and mark button as active
     document.getElementById(pageId).classList.add('active');
     document.getElementById(buttonId).classList.add('tab_active');
+
+    localStorage.setItem("page", pageId);
+    localStorage.setItem("button", buttonId);
 }
 
 

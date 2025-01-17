@@ -9,11 +9,12 @@ $(document).ready(function () {
     const flashcardTimeSpan = parseInt(localStorage.getItem("flashcard_time_span")) || 15;
     const flashcardShowAll = localStorage.getItem("flashcard_show_all") || "false";
     const flashcardNumber = parseInt(localStorage.getItem("flashcard_number")) || 20;
+    const flashcardRandomzie = localStorage.getItem("flashcard_randomize") || "false";
 
     if (flashcardShowAll === "true")
-        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, "all", gotQuestions);
+        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, "all", flashcardRandomzie === "true", gotQuestions);
     else
-        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, flashcardNumber, gotQuestions);
+        getQuestions('../../assets/flashcards/' + flashcard_question_set_path, flashcardNumber, flashcardRandomzie === "true", gotQuestions);
 });
 
 

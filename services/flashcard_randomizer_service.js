@@ -1,4 +1,4 @@
-function getQuestions(path, number_of_quizzes, callback) {
+function getQuestions(path, number_of_quizzes, randomize, callback) {
     const converter = new showdown.Converter({ simpleLineBreaks: true });
 
     if (path.endsWith(".yaml")) {
@@ -13,12 +13,12 @@ function getQuestions(path, number_of_quizzes, callback) {
                 answer: converter.makeHtml(elem.answer)
             }));
 
-            let questionsOrder = shuffle(data);
+            if (randomize === true) data = shuffle(data);
 
             if (!(number_of_quizzes === "all")) {
-                questionsOrder = questionsOrder.slice(0, number_of_quizzes);
+                data = data.slice(0, number_of_quizzes);
             }
-            callback(questionsOrder); // send the questions back
+            callback(data); // send the questions back
             return;
         })
         .catch(error => console.error('Error fetching questions:', error));
@@ -34,13 +34,13 @@ function getQuestions(path, number_of_quizzes, callback) {
                 answer: converter.makeHtml(elem.answer)
             }));
 
-            questionsOrder = shuffle(data);
+            if (randomize === true) data = shuffle(data);
 
             if (!(number_of_quizzes === "all")) {
-                questionsOrder = questionsOrder.slice(0, number_of_quizzes);
+                data = data.slice(0, number_of_quizzes);
             }
             
-            callback(questionsOrder); // sent the questions back
+            callback(data); // sent the questions back
         })
         .catch(error => console.error('Error fetching questions:', error));
     }

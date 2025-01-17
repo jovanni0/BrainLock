@@ -46,12 +46,14 @@ $(document).ready(function () {
     const flashcardTimeSpan = parseInt(localStorage.getItem("flashcard_time_span")) || 15;
     const flashcardShowAll = localStorage.getItem("flashcard_show_all") || "false";
     const flashcardNumber = parseInt(localStorage.getItem("quiz_number")) || 20;
+    const flashcardRandomize = localStorage.getItem("flashcard_randomize") || "false";
     document.getElementById('flashcardTimerInput').value = flashcardTimeSpan;
     document.getElementById('flashcardTimerInput').disabled = flashcardTimerIsOn === "false";
     document.getElementById('flashcardTimerCheckbox').checked = flashcardTimerIsOn === "true";
     document.getElementById('flashcardNumberInput').value = flashcardNumber;
     document.getElementById('flashcardNumberInput').disabled = flashcardShowAll === "true";
     document.getElementById('flashcardShowAllCheckbox').checked = flashcardShowAll === "true";
+    document.getElementById("flashcardRandomize").checked = flashcardRandomize === "true";
 });
 
 
@@ -80,10 +82,12 @@ function startFlashcard() {
     const timerInput = document.getElementById('flashcardTimerInput');
     const showAllCheckbox = document.getElementById('flashcardShowAllCheckbox');
     const numberInput = document.getElementById('flashcardNumberInput');
+    const ranzomizeCheckbox = document.getElementById("flashcardRandomize");
     localStorage.setItem("flashcard_timer_is_on", timerCheckbox.checked);
     localStorage.setItem("flashcard_time_span", timerInput.value);
     localStorage.setItem("flashcard_show_all", showAllCheckbox.checked);
     localStorage.setItem("flashcard_number", numberInput.value);
+    localStorage.setItem("flashcard_randomize", ranzomizeCheckbox.checked);
 
     window.location.href = "../flashcard/flashmaster.html";
 }
@@ -133,4 +137,10 @@ function toggleFlashcardShowAll() {
     const input = document.getElementById('flashcardNumberInput');
     input.disabled = checkbox.checked;
     localStorage.setItem("flashcard_show_all", checkbox.checked)
+}
+
+
+function toggleFlashcardRandomize() {
+    const checkbox = document.getElementById('flashcardRandomize');
+    localStorage.setItem("flashcard_randomize", checkbox.checked)
 }

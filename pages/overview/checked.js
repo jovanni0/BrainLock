@@ -6,6 +6,9 @@ let questions = JSON.parse(localStorage.getItem("questions"));
  * on document load
  */
 $(document).ready(function () {
+    var title = localStorage.getItem("question_set_path").split('.')[0].toUpperCase();
+    $("#quizz-title").text(title);
+    
     displayQuestions();
 
     $("#new_quiz").on("click", function () {

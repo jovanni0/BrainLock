@@ -1,0 +1,23 @@
+<root>
+    <elements>
+        <quizz>
+            <question>
+                A second question appears!.
+            </question>
+
+            <answers>
+                <answer index="0">answer 1</answer>
+                <answer index="1">answer 2</answer>
+                <answer index="2">answer 3</answer>
+            </answers>
+
+            <correctAnswers>
+                <correctAnswerIndex>1</correctAnswerIndex>
+            </correctAnswers>
+
+            <explanation>
+                This is the explanation for the second question.
+            </explanation>
+        </quizz>
+    </elements>
+</root>

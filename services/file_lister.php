@@ -7,7 +7,7 @@ if (is_dir($dir)) {
 
     $validFiles = array_filter($files, function($file) use ($dir) {
         $extension = pathinfo($file, PATHINFO_EXTENSION);
-        return in_array($extension, ['json', 'yaml', 'yml']) && is_file($dir . DIRECTORY_SEPARATOR . $file);
+        return in_array($extension, ['json', 'yaml', 'yml', 'xml']) && is_file($dir . DIRECTORY_SEPARATOR . $file);
     });
 
     header('Content-Type: application/json');

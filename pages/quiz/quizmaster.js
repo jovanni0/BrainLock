@@ -1,6 +1,3 @@
-let questions = JSON.parse(localStorage.getItem("questions"));
-
-
 $(document).ready(function () {
     $("#loading").show();
 
@@ -13,10 +10,18 @@ $(document).ready(function () {
     const quizShowAll = localStorage.getItem("quiz_show_all") || "false";
     const quizNumber = parseInt(localStorage.getItem("quiz_number")) || 20;
 
-    if (quizShowAll === "true")
-        getQuestions('../../assets/quizzes/' + question_set_path, "all", gotQuestions);
-    else
-        getQuestions('../../assets/quizzes/' + question_set_path, quizNumber, gotQuestions);
+    if (question_set_path.endsWith(".xml")) {
+        if (quizShowAll === "true")
+            getQuestionsFromXML('../../assets/quizzes/' + question_set_path, "all", gotQuestions);
+        else
+            getQuestionsFromXML('../../assets/quizzes/' + question_set_path, quizNumber, gotQuestions);
+    }
+    else {
+        if (quizShowAll === "true")
+            getQuestions('../../assets/quizzes/' + question_set_path, "all", gotQuestions);
+        else
+            getQuestions('../../assets/quizzes/' + question_set_path, quizNumber, gotQuestions);
+    }
 });
 
 

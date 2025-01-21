@@ -1,0 +1,39 @@
+<root>
+    <includes>
+        <include-element>quizz2.xml</include-element>
+    </includes>
+    <elements>
+        <quizz>
+            <question>
+                This is the first question!.
+
+                And now some more text here.
+
+                ```
+                char* point = (char*)malloc(sizeof(char)) (char*)malloc(sizeof(char)) (char*)malloc(sizeof(char));
+
+                if (point == null) {
+                    return 1;
+                }
+
+                return 0;
+                ```
+            </question>
+
+            <answers>
+                <answer index="0">answer 1</answer>
+                <answer index="1">answer 2</answer>
+                <answer index="2">answer 3</answer>
+            </answers>
+
+            <correctAnswers>
+                <correctAnswerIndex>0</correctAnswerIndex>
+                <correctAnswerIndex>2</correctAnswerIndex>
+            </correctAnswers>
+
+            <explanation>
+                This is the explanation for the first question.
+            </explanation>
+        </quizz>
+    </elements>
+</root>

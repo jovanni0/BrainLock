@@ -7,10 +7,18 @@ function getQuestions(path, number_of_quizzes, callback) {
         .then(text => {
             let data = jsyaml.load(text);
 
-            data = data.map(elem => ({
-                ...elem,
-                text: converter.makeHtml(elem.text)
-            }));
+            data = data.map(elem => {
+                const updatedElem = {
+                    ...elem,
+                    text: converter.makeHtml(elem.text)
+                };
+            
+                if (elem.explanation) {
+                    updatedElem.explanation = converter.makeHtml(elem.explanation);
+                }
+
+                return updatedElem;
+            });
 
             let questionsOrder = shuffle(data);
 
@@ -27,6 +35,19 @@ function getQuestions(path, number_of_quizzes, callback) {
         fetch(path)
         .then(response => response.json())
         .then(data => {
+            data = data.map(elem => {
+                const updatedElem = {
+                    ...elem,
+                    text: converter.makeHtml(elem.text)
+                };
+            
+                if (elem.explanation) {
+                    updatedElem.explanation = converter.makeHtml(elem.explanation);
+                }
+
+                return updatedElem;
+            });
+
             questionsOrder = shuffle(data);
 
             if (!(number_of_quizzes === "all")) {

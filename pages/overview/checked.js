@@ -8,6 +8,8 @@ let questions = JSON.parse(localStorage.getItem("questions"));
 $(document).ready(function () {
     var title = localStorage.getItem("question_set_path").split('.')[0].toUpperCase();
     $("#quizz-title").text(title);
+
+    $("#text").html("")
     
     displayQuestions();
 
@@ -37,7 +39,8 @@ function displayQuestions() {
                 question_text = `${question_text}\n${element}`       
             });
         }
-        const questionContainer = $('<div class="question-container"></div>').html(question_text);
+
+        const quizzContainer = $('<div class="quizz"></div>').html(question_text);
 
         question.answers.forEach((answer, answerIndex) => {
             let answerElement = $('<div class="answers"></div>').html(answer);
@@ -62,8 +65,21 @@ function displayQuestions() {
                 }
             }
 
-            questionContainer.append(answerElement);
+            quizzContainer.append(answerElement);
         });
+
+        const questionContainer = $('<div class="question-container"></div>');
+
+        const explanation = question.explanation || null;
+        if (explanation) {
+            const svg_image = $('<img src="../../images/question.svg" class="svg" onclick="toggleExplanation(this)"/>');
+            const quizzExplanation = $('<div class="explanation"></div>').html(explanation);
+            questionContainer.addClass("has-explanation");
+            questionContainer.append(svg_image, quizzContainer, quizzExplanation);
+        }
+        else {
+            questionContainer.html(quizzContainer);
+        }
 
         $("#text").append(questionContainer);
 
@@ -79,6 +95,25 @@ function displayQuestions() {
     });
 
     injectQuizzStats(nr_correct_answers, nr_incorrect_answers, nr_questions_not_answered);
+}
+
+
+function toggleExplanation(img) {
+    // Get the parent container of the clicked image
+    var parent = img.closest('.question-container');
+    
+    // Get the quizz and explanation elements inside this container
+    var quizz = parent.querySelector('.quizz');
+    var explanation = parent.querySelector('.explanation');
+    
+    // Toggle the hidden attribute of quizz and explanation
+    if (quizz.hidden) {
+        quizz.hidden = false;
+        explanation.hidden = true;
+    } else {
+        quizz.hidden = true;
+        explanation.hidden = false;
+    }
 }
 
 

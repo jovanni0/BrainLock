@@ -18,10 +18,59 @@
         <div class="container">
 
             <div id="score" class="score-container">
-    
+                <span style="color: #d4f7d4;">
+                    Nr întrebări corecte: 0
+                </span><br>
+                <span style="color: #f7d4d4;">
+                    Nr de întrebări greșite: 0
+                </span><br>
+                <span style="color: #8ad2ff;">
+                    Nr de întrebări fără răspuns: 2
+                </span>
             </div>
+    
             <div id="text">
-            
+                <div class="question-container has-explanation">
+                    <img src="../../images/question.svg" class="svg" onclick="toggleExplanation(this)"/>
+                
+                    <div class="quizz">
+                        test quizz 1
+                        <div class="answers">
+                            1
+                        </div>
+                        <div class="answers">
+                            2
+                        </div>
+                        <div class="answers missed-correct-answer">
+                            3
+                        </div>                        
+                    </div>
+                    <div class="explanation" hidden="true">
+                        This is the explanation for the quizz 1.
+                    </div>
+                </div>
+    
+                <div class="question-container">
+                    <img src="../../images/question.svg" class="svg" onclick="toggleExplanation(this)"/>
+
+                    <div class="quizz">
+                        test quizz 2
+                        <div class="answers">
+                            1
+                        </div>
+                        <div class="answers">
+                            2
+                        </div>
+                        <div class="answers missed-correct-answer">
+                            3
+                        </div>                        
+                    </div>
+
+                    <div class="explanation" hidden="true">
+                        This is the explanation for the quizz 2.
+                    </div>
+
+                </div>
             </div>
     
         </div>

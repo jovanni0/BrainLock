@@ -37,5 +37,8 @@ function gotQuestions(questions) {
 
 
 function navigateToNextPage() {
-    window.location.href = "quiz.html";
+    const isPreview = (localStorage.getItem("preview") || "false") === "true";
+
+    if (isPreview) window.location.href = "../overview/checked.html";
+    else window.location.href = "quiz.html";
 }

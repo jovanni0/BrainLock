@@ -96,8 +96,15 @@ hr.hr_vertical {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /* gap: 100px; */
     justify-content: space-around;
+}
+
+.internal_container_vertical {
+    padding: 30px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .pair_container,
@@ -166,5 +173,9 @@ button {
     padding: 16px 64px;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.secondary {
+    background-color: transparent;
 }
 /* #endregion */

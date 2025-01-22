@@ -7,8 +7,8 @@ $(document).ready(function () {
     var title = localStorage.getItem("question_set_path").split('.')[0].toUpperCase();
     $("#quizz-title").text(title);
 
-    const timer_status = localStorage.getItem("timerState") || "0";
-    if (timer_status === "1") {
+    const timer_status = (localStorage.getItem("quiz_timer_is_on") || "false") === "true";
+    if (timer_status === true) {
         activateTimer();
     }
 
@@ -100,8 +100,9 @@ function activateTimer() {
     console.log("activate timer");
 
     document.getElementById("timer").innerHTML = "loading...";
+    document.getElementById("timer").hidden = false;
 
-    var timespan = parseInt(localStorage.getItem("timer_timespan")) * 60000 || 900000; // default 15 min
+    var timespan = parseInt(localStorage.getItem("quiz_time_span")) * 60000 || 900000; // default 15 min
     var countdown = setInterval(
         function () {
             var minutes = Math.floor((timespan % (1000 * 60 * 60)) / (1000 * 60));

@@ -71,6 +71,24 @@ function startQuizz() {
     localStorage.setItem("quiz_time_span", timerInput.value);
     localStorage.setItem("quiz_show_all", showAllCheckbox.checked);
     localStorage.setItem("quiz_number", numberInput.value);
+    localStorage.setItem("preview", "false");
+
+    window.location.href = "../quiz/quizmaster.html";
+}
+
+function skipQuizz() {
+    const dropdown = document.getElementById("quizz_selector");
+    localStorage.setItem("question_set_path", dropdown.value);
+
+    const timerCheckbox = document.getElementById('quizzTimerCheckbox');
+    const timerInput = document.getElementById('quizzTimerInput');
+    const showAllCheckbox = document.getElementById('quizzShowAllCheckbox');
+    const numberInput = document.getElementById('quizzNumberInput');
+    localStorage.setItem("quiz_timer_is_on", timerCheckbox.checked);
+    localStorage.setItem("quiz_time_span", timerInput.value);
+    localStorage.setItem("quiz_show_all", showAllCheckbox.checked);
+    localStorage.setItem("quiz_number", numberInput.value);
+    localStorage.setItem("preview", "true");
 
     window.location.href = "../quiz/quizmaster.html";
 }

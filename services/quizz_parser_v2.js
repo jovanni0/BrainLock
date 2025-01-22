@@ -58,13 +58,19 @@ function parseXMLContent(xmlText) {
  */
 function extractQuizData(quizz) {
     const questionElement = quizz.getElementsByTagName("question")[0];
+    console.log(questionElement);
 
     // Combine text and SVG content
     const content = Array.from(questionElement.childNodes).map(node => {
         if (node.nodeType === Node.TEXT_NODE) {
             // Dedent Markdown text before converting to HTML
             const dedentedText = dedentMarkdown(node.textContent.trim());
-            return converter.makeHtml(dedentedText);
+            console.log(dedentedText);
+            const escapedText = decodeEntityes(dedentedText)
+            console.log(escapedText);
+            const convertedText = converter.makeHtml(escapedText);
+            console.log(convertedText);
+            return convertedText;
         } else if (node.nodeName.toLowerCase() === "svg") {
             return node.outerHTML;
         }
@@ -81,7 +87,7 @@ function extractQuizData(quizz) {
 
     // Extract explanation if it exists
     const explanationNode = quizz.getElementsByTagName("explanation")[0];
-    const explanation = explanationNode ? converter.makeHtml(dedentMarkdown(explanationNode.textContent.trim())) : null;
+    const explanation = explanationNode ? converter.makeHtml(decodeEntityes(dedentMarkdown(explanationNode.textContent.trim()))) : null;
 
     return { text: content, answers, correctAnswers, explanation };
 }
@@ -124,6 +130,7 @@ function getQuestionsFromXML(path, number_of_quizzes, callback) {
         .then(text => reversePrettyPrintXML(text))
         .then((text) => {
             const mainData = parseXMLContent(text);
+            // console.log(mainData);
             const xmlDoc = parser.parseFromString(text, "application/xml");
 
             fetchAndParseIncludes(xmlDoc)
@@ -135,6 +142,39 @@ function getQuestionsFromXML(path, number_of_quizzes, callback) {
         })
         .catch(error => console.error("Error fetching main file:", error));
 }
+
+
+/**
+ * Decode escaped HTML entities (&lt;, &gt;, etc.) inside Markdown code blocks.
+ * @param {string} markdownText The raw Markdown text.
+ * @returns {string} Processed Markdown with decoded entities in code blocks.
+ */
+function decodeEntityes(text) {
+    const xmlEntities = {
+    '&lt;': '<',
+    '&gt;': '>',
+    '&amp;': '&',
+    '&quot;': '"',
+    '&apos;': "'",
+    };
+
+    // Replace all XML entities with their corresponding characters
+    return text.replace(/&lt;|&gt;|&amp;|&quot;|&apos;/g, match => xmlEntities[match]);
+}
+
+function encodeEntityes(text) {
+    const xmlEntities = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;',
+        "'": '&apos;',
+    };
+
+    // Replace characters with their corresponding HTML entities
+    return text.replace(/[<>&"'"]/g, match => xmlEntities[match]);
+}
+    
 
 
 /**
@@ -160,6 +200,8 @@ function reversePrettyPrintXML(xmlText) {
 
         return line; // Return blank lines as-is
     });
+
+    // console.log(processedLines.join("\n"));
 
     return processedLines.join("\n");
 }

@@ -24,6 +24,12 @@ code {
   align-items: center;
 }
 
+@media (max-width: 850px) {
+  .center {
+    align-items: baseline;
+  }
+}
+
 .container {
   /* background-color: red; */
   max-width: 850px;

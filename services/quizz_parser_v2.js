@@ -79,7 +79,7 @@ function extractQuizData(quizz) {
 
     // Extract answers and correct answers
     const answers = Array.from(quizz.getElementsByTagName("answer")).map(
-        answer => answer.textContent.trim()
+        answer => converter.makeHtml(answer.textContent.trim())
     );
     const correctAnswers = Array.from(quizz.getElementsByTagName("correctAnswerIndex")).map(
         correctAnswer => parseInt(correctAnswer.textContent.trim(), 10)
@@ -98,7 +98,7 @@ function extractQuizData(quizz) {
 function fetchAndParseIncludes(xmlDoc) {
     const includeElements = Array.from(xmlDoc.getElementsByTagName("include-element"));
     const promises = includeElements.map(include =>
-        fetch('../../assets/quizzes/' + include.textContent.trim())
+        fetch('../assets/quizzes/' + include.textContent.trim())
             .then(response => response.text())
             .then(parseXMLContent)
             .catch(error => console.error("Error fetching main file:", error))

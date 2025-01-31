@@ -1,3 +1,7 @@
+# misc files to be ignored
+*/quizzes/test_*
+*/flaschards/test_*
+
 # Node.js
 node_modules/
 

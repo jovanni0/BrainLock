@@ -282,3 +282,10 @@ code {
 }
 
 /* #endregion */
+
+img,
+svg {
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+}

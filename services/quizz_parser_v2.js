@@ -1,6 +1,17 @@
 const parser = new DOMParser();
 const converter = new showdown.Converter({ simpleLineBreaks: true, ghCodeBlocks: true });
 
+// For browsers (using the CDN), markdownit and markdownitKatex are globally available
+// let md = window.markdownit().use(window.markdownitKatex);
+// const md = new MarkdownIt().use(markdownItKatex);
+
+// Inside your function that converts Markdown text to HTML:
+function markdownToHTML(markdownText) {
+  // decode entities if you want, etc.
+//   return md.render(markdownText);
+  return converter.makeHtml(markdownText)
+}
+
 /**
  * Fisher-Yates Shuffle function to shuffle the questions array
  * @param {array} array the array that should be shuffled
@@ -14,6 +25,38 @@ function shuffle(array) {
     }
     return shuffledArray;
 }
+
+
+/**
+ * Shuffles the answers of each quiz and remaps correct answer indices.
+ * @param {Array} quizzes - Array of quiz objects with `answers` and `correctAnswers`.
+ * @returns {Array} A new array of quiz objects with shuffled answers and remapped correct answer indices.
+ */
+function shuffleAnswers(quizzes) {
+    return quizzes.map(quiz => {
+        const originalAnswers = quiz.answers;
+        const originalCorrectIndices = quiz.correctAnswers;
+
+        // Map answers to objects that track original indices
+        const indexedAnswers = originalAnswers.map((answer, index) => ({ answer, originalIndex: index }));
+
+        // Shuffle indexed answers
+        const shuffled = shuffle(indexedAnswers);
+
+        // Reconstruct answers and remap correct indices
+        const newAnswers = shuffled.map(item => item.answer);
+        const indexMap = new Map(shuffled.map((item, newIndex) => [item.originalIndex, newIndex]));
+
+        const newCorrectIndices = originalCorrectIndices.map(oldIndex => indexMap.get(oldIndex));
+
+        return {
+            ...quiz,
+            answers: newAnswers,
+            correctAnswers: newCorrectIndices
+        };
+    });
+}
+
 
 /**
  * Dedents Markdown content to remove unnecessary leading spaces
@@ -68,10 +111,11 @@ function extractQuizData(quizz) {
             console.log(dedentedText);
             const escapedText = decodeEntityes(dedentedText)
             console.log(escapedText);
-            const convertedText = converter.makeHtml(escapedText);
+            // const convertedText = converter.makeHtml(escapedText);
+            const convertedText = markdownToHTML(escapedText);
             console.log(convertedText);
             return convertedText;
-        } else if (node.nodeName.toLowerCase() === "svg") {
+        } else if (node.nodeName.toLowerCase() === "svg" || node.nodeName.toLowerCase() === "img") {
             return node.outerHTML;
         }
         return "";
@@ -79,7 +123,8 @@ function extractQuizData(quizz) {
 
     // Extract answers and correct answers
     const answers = Array.from(quizz.getElementsByTagName("answer")).map(
-        answer => converter.makeHtml(answer.textContent.trim())
+        // answer => converter.makeHtml(answer.textContent.trim())
+        answer => markdownToHTML(answer.textContent.trim())
     );
     const correctAnswers = Array.from(quizz.getElementsByTagName("correctAnswerIndex")).map(
         correctAnswer => parseInt(correctAnswer.textContent.trim(), 10)
@@ -87,7 +132,25 @@ function extractQuizData(quizz) {
 
     // Extract explanation if it exists
     const explanationNode = quizz.getElementsByTagName("explanation")[0];
-    const explanation = explanationNode ? converter.makeHtml(decodeEntityes(dedentMarkdown(explanationNode.textContent.trim()))) : null;
+    const explanation = Array.from(explanationNode.childNodes).map(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            // Dedent Markdown text before converting to HTML
+            const dedentedText = dedentMarkdown(node.textContent.trim());
+            console.log(dedentedText);
+            const escapedText = decodeEntityes(dedentedText)
+            console.log(escapedText);
+            // const convertedText = converter.makeHtml(escapedText);
+            const convertedText = markdownToHTML(escapedText);
+            console.log(convertedText);
+            return convertedText;
+        } 
+        else if (node.nodeName.toLowerCase() === "svg" || node.nodeName.toLowerCase() === "img") {
+            return node.outerHTML;
+        }
+        return "";
+    }).join("");
+    // // const explanation = explanationNode ? converter.makeHtml(decodeEntityes(dedentMarkdown(explanationNode.textContent.trim()))) : null;
+    // const explanation = explanationNode ? markdownToHTML(decodeEntityes(dedentMarkdown(explanationNode.textContent.trim()))) : null;
 
     return { text: content, answers, correctAnswers, explanation };
 }
@@ -110,9 +173,14 @@ function fetchAndParseIncludes(xmlDoc) {
 /**
  * Combines the main data with included data and applies shuffling and filtering.
  */
-function processQuestions(mainData, includedData, number_of_quizzes) {
+function processQuestions(mainData, includedData, number_of_quizzes, toShuffle) {
     const combinedData = [...mainData, ...includedData];
-    let questionsOrder = shuffle(combinedData);
+    // let questionsOrder = shuffle(combinedData);
+    let questionsOrder = combinedData;
+    if (toShuffle) {
+        questionsOrder = shuffle(questionsOrder);
+        questionsOrder = shuffleAnswers(questionsOrder)
+    }
 
     if (number_of_quizzes !== "all") {
         questionsOrder = questionsOrder.slice(0, number_of_quizzes);
@@ -124,7 +192,7 @@ function processQuestions(mainData, includedData, number_of_quizzes) {
 /**
  * Main function to fetch and process the main XML file and included files.
  */
-function getQuestionsFromXML(path, number_of_quizzes, callback) {
+function getQuestionsFromXML(path, number_of_quizzes, shuffle, callback) {
     fetch(path)
         .then(response => response.text())
         .then(text => reversePrettyPrintXML(text))
@@ -135,7 +203,7 @@ function getQuestionsFromXML(path, number_of_quizzes, callback) {
 
             fetchAndParseIncludes(xmlDoc)
                 .then(includedData => {
-                    const questionsOrder = processQuestions(mainData, includedData, number_of_quizzes);
+                    const questionsOrder = processQuestions(mainData, includedData, number_of_quizzes, shuffle);
                     callback(questionsOrder);
                 })
                 .catch(error => console.error("Error fetching included files:", error));
@@ -189,6 +257,9 @@ function reversePrettyPrintXML(xmlText) {
     const processedLines = lines.map(line => {
         const trimmedLine = line.trim();
 
+        if (trimmedLine.startsWith("<") && trimmedLine.endsWith("/>")) {
+            return line.slice(storedIndent);
+        }
         if (trimmedLine.startsWith("<") && trimmedLine.endsWith(">")) {
             // Line contains an XML tag; remove all indentation and store its level
             storedIndent = line.match(/^\s*/)[0].length + 4; // Store leading spaces

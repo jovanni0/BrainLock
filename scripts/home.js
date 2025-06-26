@@ -17,15 +17,22 @@ function populateDropdown(url, dropdownId) {
         .then(files => {
             console.log(files);
             const dropdown = document.getElementById(dropdownId);
+            const savedValue = localStorage.getItem("question_set_path");
+
             files.forEach(file => {
                 const option = document.createElement('option');
                 option.value = file;
                 option.textContent = file;
                 dropdown.appendChild(option);
             });
+
+            if (savedValue && files.includes(savedValue)) {
+                dropdown.value = savedValue;
+            }
         })
         .catch(err => console.error(`Error fetching files from ${url}:`, err));
 }
+
 
 function initializeSettings(settings) {
     settings.forEach(({ checkboxId, inputId, storageKeys, defaultValues }) => {

@@ -106,6 +106,11 @@ function displayQuestion() {
     $("#progress").text(`${questionIndex + 1}/${questions.length}`);
     $("#card").html(createQuestionCard(currentQuestion, answersContainer));
 
+    // KaTeX + code highlighting
+    const cardElement = document.getElementById("card");
+    renderKatexInElement(cardElement);
+    applySyntaxHighlighting(cardElement);
+
     updateNavigationButtons();
 }
 

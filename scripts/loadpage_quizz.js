@@ -49,8 +49,9 @@ function loadQuestions(questionSetPath, quizSettings) {
 }
 
 function fetchQuestionsFromXML(path, settings, callback) {
+    const isPreview = (localStorage.getItem("preview") || "false") === "true";
     const fetchMode = settings.showAll === "true" ? "all" : settings.numberOfQuestions;
-    getQuestionsFromXML(path, fetchMode, callback);
+    getQuestionsFromXML(path, fetchMode, !isPreview, callback);
 }
 
 function fetchQuestions(path, settings, callback) {

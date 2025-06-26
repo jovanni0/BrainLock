@@ -3,7 +3,12 @@ $(document).ready(() => {
 
     const [correct, incorrect, unanswered] = displayQuestions();
     setupHeader(correct, incorrect, unanswered);
+
+    const cardsContainer = document.getElementById("cards");
+    renderKatexInElement(cardsContainer);  // KaTeX rendering
+    applySyntaxHighlighting(cardsContainer);  // Code highlighting
 });
+
 
 function setupHeader(correct, incorrect, unanswered) {
     const title = localStorage.getItem("question_set_path").split('.')[0].toUpperCase();

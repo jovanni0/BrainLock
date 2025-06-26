@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<elements>
+    <quizz>
+        <question>
+            Codul Cezar ca mod de functionare poate fi asociata:
+        </question>
+        <answers>
+            <answer index="0" correct="true">
+                Unei substitutii monoalfabetice
+            </answer>
+            <answer index="1" correct="false">
+                Unui cod bloc
+            </answer>
+            <answer index="2" correct="false">
+                Unui cod stream
+            </answer>
+            <answer index="3" correct="false">
+                Niciuna din cele mentionate
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Care dintre urmatoarele probleme este echivalenta decriptarii RSA:
+        </question>
+        <answers>
+            <answer index="0" correct="true">
+                Factorizarea
+            </answer>
+            <answer index="1" correct="false">
+                Euler Phi
+            </answer>
+            <answer index="2" correct="false">
+                Decriptarea Rabin
+            </answer>
+            <answer index="3" correct="false">
+                Calculul cheii RSA
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            La ce se refera metoda PKCS:
+        </question>
+        <answers>
+            <answer index="0" correct="true">
+                Un criptosistem simetric
+            </answer>
+            <answer index="1" correct="false">
+                Un padding pentru RSA
+            </answer>
+            <answer index="2" correct="false">
+                Un padding pentru Diffie-Hellman
+            </answer>
+            <answer index="3" correct="false">
+                Un cod de criptare bloc
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Problema decizionala Diffie-Hellman conduce la:
+        </question>
+        <answers>
+            <answer index="0" correct="true">
+                Calculul logaritmilor discreti
+            </answer>
+            <answer index="1" correct="false">
+                Spargerea criptosistemului Diffie-Hellman
+            </answer>
+            <answer index="2" correct="false">
+                Factorizarea intregilor
+            </answer>
+            <answer index="3" correct="false">
+                Calculul cheii Diffie-Hellman din exponenti
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            CBC este:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                O metoda de padding
+            </answer>
+            <answer index="1" correct="false">
+                Un criptosistem
+            </answer>
+            <answer index="2" correct="true">
+                Un mod de functionare al codurilor bloc
+            </answer>
+            <answer index="3" correct="false">
+                Coduri Bloc Comutative
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Care este expresia matematica ce descrie operatia de criptare RSA:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                d = e^-1 mod fi(n)
+            </answer>
+            <answer index="1" correct="true">
+                c = m^e mod n
+            </answer>
+            <answer index="2" correct="false">
+                m = c^d mod n
+            </answer>
+            <answer index="3" correct="false">
+                c = m^d mod n
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Dimensiunea hash-ului rezultat aplicand SHA1 este:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                128 biti
+            </answer>
+            <answer index="1" correct="true">
+                160 biti
+            </answer>
+            <answer index="2" correct="false">
+                190 biti
+            </answer>
+            <answer index="3" correct="false">
+                256 biti
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Non-repudierea ca obiectiv de securitate este asigurata in general de:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                Functii de criptare simetrice
+            </answer>
+            <answer index="1" correct="true">
+                Semnaturi digitale
+            </answer>
+            <answer index="2" correct="false">
+                Functii hash de integritare
+            </answer>
+            <answer index="3" correct="false">
+                Coduri MAC
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            In modul CBC pierderea unui bloc de criptotext duce la:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                imposibilitatea de a decripta blocurile ce urmeaza
+            </answer>
+            <answer index="1" correct="true">
+                imposibilitatea de a decripta blocul ce urmeaza, restul se decripteaza normal
+            </answer>
+            <answer index="2" correct="false">
+                daca este chiar blocul IV un adversar poate sparge criptosistemul
+            </answer>
+            <answer index="3" correct="false">
+                nu este o problema daca exista un counter sincron
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+    <quizz>
+        <question>
+            Daca o functie hash are output pe 32 de biti, ne asteptam la o coliziune arbitrara cu probabilitate de 1/2 dupa aproximativ cate intrari:
+        </question>
+        <answers>
+            <answer index="0" correct="false">
+                2^32
+            </answer>
+            <answer index="1" correct="false">
+                512
+            </answer>
+            <answer index="2" correct="false">
+                128
+            </answer>
+            <answer index="3" correct="true">
+                2^16
+            </answer>
+        </answers>
+        <explanation>
+             
+        </explanation>
+    </quizz>
+</elements>
+</root>

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:700|Inter:400');
+
+@import "tailwindcss";
+
+:root {
+   font-family: Inter, system-ui, sans-serif;
+   line-height: 1.5;
+   font-weight: 400;
+   font-synthesis: none;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   background-color: var(--c-bgdark);
+}
+
+html,
+body {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   min-height: 100dvh;
+   font-family: 'Inter';
+   font-weight: 400;
+   display: flex;
+}
+
+#root {
+   min-width: 100%;
+   min-height: 100%;
+}
+
+@theme {
+   /* TEXT COLORS */
+   --color-text: var(--c-text);
+   --color-textmuted: var(--c-textmuted);
+   --color-textprimary: var(--c-textprimary);
+   --color-textinverted: var(--c-textinverted);
+   --color-textdanger: var(--c-textdanger);
+   --color-textsuccess: var(--c-textsuccess);
+   --color-textblue: var(--c-textblue);
+   --color-textorange: var(--c-textorange);
+   --color-textyellow: var(--c-textyellow);
+
+   /* BACKGROUND COLORS */
+   --color-bgdark: var(--c-bgdark);
+   --color-bgdark-hover: var(--c-bgdark-hover);
+   --color-bg: var(--c-bg);
+   --color-bg-hover: var(--c-bg-hover);
+   --color-bglight: var(--c-bglight);
+   --color-bglight-hover: var(--c-bglight-hover);
+
+   /* GENERIC COLORS */
+   --color-primary: var(--c-primary);
+   --color-primary-hover: var(--c-primary-hover);
+   --color-hover: var(--c-hover);
+   --color-success: var(--c-success);
+   --color-danger: var(--c-danger);
+   --color-blue: var(--c-blue);
+   --color-orange: var(--c-orange);
+   --color-yellow: var(--c-yellow);
+
+   --color-inset: hsla(0, 0%, 0%, 0.1);
+   --color-inset-strong: hsla(0, 0%, 0%, 0.3);
+   --color-outset: hsla(0, 0%, 100%, 0.05);
+
+   /* SHADOWS */
+   --shadow-sm: inset 0 1px 2px #ffffff30, 0 1px 2px #00000030, 0 2px 4px #00000015;
+   --shadow-bottom: 0 1px 2px #00000030, 0 2px 4px #00000015;
+   --shadow-md: inset 0 1px 2px #ffffff50, 0 2px 4px #00000030, 0 4px 8px #00000015;
+   --shadow-lg: inset 0 1px 2px #ffffff70, 0 4px 6px #00000030, 0 6px 10px #00000015;
+   --shadow-inset: inset 0 -1px 2px #ffffff30, 0 -1px 2px #00000030, 0 -2px 4px #00000015;
+   --shadow-inset-bottom: 0 -1px 2px #00000030, 0 -2px 4px #00000015;
+
+   /* pulse animation for tracking the last edited question in QuizBuilder */
+   @keyframes pulse-border {
+      0%, 40%, 50%, 90%, 100% {
+         box-shadow: var(--shadow-sm), 0 0 0 0 color-mix(in srgb, var(--color-primary-hover) 0%);
+         border-color: var(--color-primary);
+      }
+
+      10%, 60% {
+         box-shadow: var(--shadow-sm), 0 0 10px 4px color-mix(in srgb, var(--color-primary-hover) 100%);
+         border-color: var(--color-primary-hover);
+      }
+   }
+   --animate-pulse-twice: pulse-border 1s ease-in-out 1;
+}
+
+.light {
+   /* TEXT COLORS */
+   --c-text: hsl(0 0% 5%);
+   --c-textmuted: hsl(0 0% 50%);
+   --c-textprimary: oklch(0.6 0.7 110);
+   --c-textinverted: hsl(0 0% 95%);
+   --c-textdanger: oklch(0.7 0.15 20);
+   --c-textsuccess: oklch(0.45 0.2 160);
+   --c-textblue: oklch(0.5 0.1 250);
+   --c-textorange: oklch(0.5 0.1 50);
+   --c-textyellow: oklch(0.6 0.15 105);
+
+   /* BACKGROUND COLORS */
+   --c-bgdark: hsl(0 0% 90%);
+   --c-bgdark-hover: hsl(0 0% 90%);
+   --c-bg: hsl(0 0% 95%);
+   --c-bg-hover: hsl(0 0% 95%);
+   --c-bglight: hsl(0 0% 100%);
+   --c-bglight-hover: hsl(0 0% 100%);
+
+   /* GENERIC COLORS */
+   --c-primary: oklch(0.8 0.9 110);
+   --c-primary-hover: oklch(0.85 0.95 110);
+   --c-hover: hsla(0, 0%, 0%, 0.1);
+   --c-success: oklch(0.7 0.1 160);
+   --c-danger: oklch(0.7 0.15 20);
+   --c-blue: oklch(0.5 0.1 250);
+   --c-orange: oklch(0.5 0.1 50);
+   --c-yellow: oklch(0.6 0.15 105);
+}
+
+.dark {
+   /* TEXT COLORS */
+   --c-text: hsl(0 0% 95%);
+   --c-textmuted: hsl(0 0% 70%);
+   --c-textprimary: oklch(0.5 0.5 110);
+   --c-textinverted: hsl(0 0% 5%);
+   --c-textdanger: oklch(0.7 0.2 20);
+   --c-textsuccess: oklch(0.6 0.1 160);
+   --c-textblue: oklch(0.7 0.1 250);
+   --c-textorange: oklch(0.6 0.15 45);
+   --c-textyellow: oklch(0.7 0.2 105);
+
+   /* BACKGROUND COLORS */
+   --c-bgdark: hsl(0 0% 10%);
+   --c-bgdark-hover: hsl(0 0% 12%);
+   --c-bg: hsl(0 0% 15%);
+   --c-bg-hover: hsl(0 0% 15%);
+   --c-bglight: hsl(0 0% 25%);
+   --c-bglight-hover: hsl(0 0% 25%);
+
+   /* GENERIC COLORS */
+   --c-primary: oklch(0.35 0.4 110);
+   --c-primary-hover: oklch(0.4 0.4 110);
+   --c-hover: hsla(0, 0%, 100%, 0.1);
+   --c-success: oklch(0.4 0.1 160);
+   --c-danger: oklch(0.4 0.15 20);
+   --c-blue: oklch(0.7 0.1 250);
+   --c-orange: oklch(0.4 0.15 45);
+   --c-yellow: oklch(0.6 0.15 105);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}

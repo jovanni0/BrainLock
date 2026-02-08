@@ -1,0 +1,113 @@
+/* Container for markdown content */
+.markdown-body {
+  line-height: 1.6;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Headings */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.markdown-body h1 { font-size: 2rem; }
+.markdown-body h2 { font-size: 1.6rem; }
+.markdown-body h3 { font-size: 1.3rem; }
+
+/* Paragraphs */
+.markdown-body p {
+  margin-bottom: 1em;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.markdown-body ul,
+.markdown-body ol {
+  margin-bottom: 1.5em;
+}
+.markdown-body li {
+  margin: 0.3em 0;
+}
+
+.markdown-body ul {
+  list-style: disc;     /* ensures bullet points */
+  padding-left: 1.5em;  /* adds space so bullets are visible */
+}
+
+.markdown-body ol {
+  list-style: decimal;  /* ordered list numbers */
+  padding-left: 1.5em;
+}
+
+/* Code inline */
+.markdown-body code {
+  background: var(--color-inset);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* Code blocks */
+.markdown-body pre code {
+  display: block;
+  padding: 1em;
+  background: var(--color-inset);
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+/* Blockquotes */
+.markdown-body blockquote {
+  border-left: 4px solid var(--color-inset-strong);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: var(--color-inset);
+  color: var(--color-text);
+}
+
+.markdown-body blockquote:only-child {
+  margin: 0; /* no margin when it's the only child */
+}
+
+/* Tables */
+.markdown-body table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #ddd;
+  padding: 0.6em;
+}
+.markdown-body th {
+  background: #f6f6f6;
+  font-weight: 600;
+}
+
+/* Horizontal rule */
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
+}

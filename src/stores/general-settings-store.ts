@@ -17,7 +17,7 @@ export const useGeneralSettings = create<GeneralSettings>()(
     is_dark_theme: undefined,
     setDarkTheme: (value: boolean) => set({ is_dark_theme: value }),
 
-    api_url: "",
+    api_url: import.meta.env.API_URL || "",
     setApiUrl: (api_url: string) => set({ api_url })
 }),
 {

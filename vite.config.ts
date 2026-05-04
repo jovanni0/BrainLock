@@ -35,6 +35,8 @@ export default defineConfig({
     })
   ],
 
+  envPrefix: ['VITE_', 'API_'],
+
   server: {
     proxy: {
       "/api": {

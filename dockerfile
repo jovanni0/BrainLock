@@ -2,6 +2,11 @@
 FROM node:22-alpine AS build
 RUN apk add --no-cache git
 WORKDIR /app
+
+# accept API path as argument
+ARG API_URL
+ENV API_URL=$API_URL
+
 COPY package*.json ./
 RUN npm install
 COPY . .

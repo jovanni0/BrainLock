@@ -66,7 +66,7 @@ export default function QuizCard(
 
                 {
                     topics.filter(x => x.toLowerCase() !== "").length > 0 
-                    && <div className="flex flex-row gap-2">
+                    && <div className="flex flex-row flex-wrap gap-2">
                     {
                         topics
                             .filter(x => x.toLowerCase() !== "")
@@ -83,7 +83,7 @@ export default function QuizCard(
                     <div className="text-sm md:text-base text-textmuted">{description}</div>
                     {
                         topics.filter(x => x.toLowerCase() !== "").length > 0 
-                        && <div className="flex flex-row gap-2">
+                        && <div className="flex flex-row flex-wrap gap-2">
                         {
                             topics
                                 .filter(x => x.toLowerCase() !== "")

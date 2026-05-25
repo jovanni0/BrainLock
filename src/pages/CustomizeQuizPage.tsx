@@ -82,7 +82,24 @@ export default function CustomizeQuizPage()
             return
         }
 
+        // 1. Map your existing metadata topics
         const selectable_topics = topic2SelectableTopic(metadata.topics)
+        console.log(selectable_topics)
+
+        // 2. Check if the metadata tracks untagged questions or total questions mismatch
+        const mappedQuestionsSum = metadata.topics.reduce((sum, t) => sum + t.questionNo, 0)
+        
+        if (metadata.questionNo > mappedQuestionsSum) {
+            const catchAllCount = metadata.questionNo - mappedQuestionsSum;
+            
+            // Push your catch-all item to the array
+            selectable_topics.push({
+                name: "Uncategorized", // Or whatever display string you want
+                questionNo: catchAllCount,
+                selected: true // Default to active
+            })
+        }
+
         setTopicPreference(target_hash, selectable_topics)
         
     }, [topics, usage_mode, target_hash, server_quiz_metadata, local_quiz_metadata, setTopicPreference])

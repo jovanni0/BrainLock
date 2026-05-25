@@ -34,6 +34,9 @@ export default function SettingsPage()
     const api_url = useGeneralSettings(store => store.api_url)
     const setApiUrl = useGeneralSettings(store => store.setApiUrl)
 
+    const show_immediate_feedback = usePresentationSettingsStore(store => store.show_immediate_feedback)
+    const setShowImmediateFeedback = usePresentationSettingsStore(store => store.setShowImmediateFeedback)
+
 
     return (
         <Page
@@ -184,6 +187,8 @@ export default function SettingsPage()
                 <SettingsCategory
                     title="Show Immediate Feedback"
                     description="Show if answer is correct/incorrect right away"
+                    isChecked={show_immediate_feedback}
+                    onCheck={() => setShowImmediateFeedback(!show_immediate_feedback)}
                 />
 
                 <SettingsCategory

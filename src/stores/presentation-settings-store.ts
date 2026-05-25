@@ -26,6 +26,10 @@ type PresentationSettingsStore = {
 
     show_explanation: boolean
     setShowExplanation: (value: boolean) => void
+
+    // Add these to your state type/interface:
+    show_immediate_feedback: boolean
+    setShowImmediateFeedback: (value: boolean) => void
 }
 
 
@@ -55,6 +59,10 @@ export const usePresentationSettingsStore = create<PresentationSettingsStore>()(
     
     show_explanation: false,
     setShowExplanation: (value: boolean) => set({ show_explanation: value }),
+
+    // Add these to your initial state / actions inside create():
+    show_immediate_feedback: false, // default to false
+    setShowImmediateFeedback: (value) => set({ show_immediate_feedback: value }),
 }),
 {
     name: "general-settings-store"

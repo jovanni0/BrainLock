@@ -36,6 +36,7 @@ export default function ProgressPage()
     const shuffle_answers = usePresentationSettingsStore(store => store.shuffle_answers)
     const show_question_number = usePresentationSettingsStore(store => store.show_question_number)
     const show_progress_bar = usePresentationSettingsStore(store => store.show_progress_bar)
+    const show_immediate_feedback = usePresentationSettingsStore(store => store.show_immediate_feedback)
 
 
     //-------------------
@@ -177,6 +178,8 @@ export default function ProgressPage()
     }
 
 
+    const [has_checked, setHasChecked] = useState<boolean>(false)
+
     /**
      * change the currently displayed question index.
      * @param new_index the index of the new question.
@@ -184,16 +187,12 @@ export default function ProgressPage()
     function changeQuestion(new_index: number) : void
     {
         const new_question = quiz?.questions.at(new_index);
-
-        if (!new_question)
-        {
-            console.log("ERROR: trying to set new question but it's undefined")
-            return
-        }
+        if (!new_question) return;
 
         setQuestionTopic(new_question.topic)
         setQuestionText(new_question.text)
         setCurrentIndex(new_index)
+        setHasChecked(false) // <-- Reset here
     }
 
 
@@ -236,6 +235,11 @@ export default function ProgressPage()
                 onNextNav={ () => changeQuestion(current_index + 1) }
                 onFinish={navToResultPage}
                 onToggleAnswer={toggleAnswer}
+                // New Props:
+                hasChecked={has_checked}
+                onCheck={() => setHasChecked(true)}
+                explanation={ quiz?.questions.at(current_index)?.explanation }
+                instantFeedback={show_immediate_feedback}
             />
         </BlankPage>
     );

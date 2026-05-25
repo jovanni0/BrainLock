@@ -20,14 +20,23 @@ export default function ResultPage()
 
     const [current_tab_index, setCurrentTabIndex] = useState(0);
 
-    const correct_questions = last_completed_quiz?.questions.filter(
-        q => q.answers.every(e => e.correct === e.selected) && q.answers.some(x => x.selected)
-    );
-    const wrong_questions = last_completed_quiz?.questions.filter(
-        q => q.answers.some(e => e.selected && e.correct !== e.selected)
-    );
+    // 1. A question is skipped if the user did not interact with any answers at all
     const skipped_questions = last_completed_quiz?.questions.filter(
-        q => q.answers.every(e => !e.selected)
+        q => q.answers.every(ans => !ans.selected)
+    );
+
+    // 2. A question is correct if every single answer option matches its correct state perfectly
+    const correct_questions = last_completed_quiz?.questions.filter(
+        q => q.answers.every(ans => !!ans.selected === !!ans.correct)
+    );
+
+    // 3. A question is wrong if it was not skipped AND it was not correct
+    const wrong_questions = last_completed_quiz?.questions.filter(
+        q => {
+            const isSkipped = q.answers.every(ans => !ans.selected);
+            const isCorrect = q.answers.every(ans => !!ans.selected === !!ans.correct);
+            return !isSkipped && !isCorrect;
+        }
     );
     const filtered_questions = current_tab_index === 0 ? last_completed_quiz?.questions : current_tab_index === 1 ? correct_questions : current_tab_index === 2 ? wrong_questions : skipped_questions
 
